@@ -2,6 +2,7 @@
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.Runtime.InteropServices;
+using System.Threading;
 
 namespace AutoPC
 {
@@ -160,6 +161,13 @@ namespace AutoPC
 		{
 			var pic = AsBitmap();
 			pic.Save(filePath, ImageFormat.Png);
+			pic.Dispose();
+		}
+
+		public void SaveToFile(string filePath, ImageFormat format)
+		{
+			var pic = AsBitmap();
+			pic.Save(filePath, format);
 			pic.Dispose();
 		}
 

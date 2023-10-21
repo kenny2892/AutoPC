@@ -231,7 +231,10 @@ namespace AutoPC
 
 		public static void UpdateLastKnownCoords()
 		{
-			LastKnownCoords = GetCoords();
+			lock(Locker)
+			{
+				LastKnownCoords = GetCoords();
+			}
 		}
 	}
 }

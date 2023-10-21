@@ -245,9 +245,9 @@ namespace AutoPC
 		private static Coordinate ScanAreaAndCancel(Picture toSearchIn, Picture toSearchFor, Coordinate upperLeftCoords, CancellationToken cancelToken, CancellationTokenSource cancelTokenSource, int colorSearchBuffer, bool skipTransparentPixels)
 		{
 			// Check each of those pixel locations for a match
-			for(int x = 0; x < toSearchFor.Width; x++)
+			for(int x = 0; x < toSearchFor.Width && upperLeftCoords.X + x < toSearchIn.Width; x++)
 			{
-				for(int y = 0; y < toSearchFor.Height; y++)
+				for(int y = 0; y < toSearchFor.Height && upperLeftCoords.Y + y < toSearchIn.Height; y++)
 				{
 					var toSearchInColor = toSearchIn.GetColor(upperLeftCoords.X + x, upperLeftCoords.Y + y);
 					var toSearchForColor = toSearchFor.GetColor(x, y);
